@@ -21,8 +21,8 @@ export default class DAppObject {
             this.assetTokenContract = new this.web3obj.eth.Contract(jsonInterface.abi, process.env.CONTRACTADDRESS);
         }
         else {
-            this.web3obj.eth.getAccounts((err, accRes) => {
-                this.ethereumAddress = accRes;
+            this.web3obj.eth.getAccounts().then(accounts => {
+                this.ethereumAddress = accounts;
                 this.registeredUsers.push({
                     'Name': "MarketPlace Admin",
                     'LoginName': "Admin",
